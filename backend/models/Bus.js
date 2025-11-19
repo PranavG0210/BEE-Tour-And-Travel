@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const busSchema = new mongoose.Schema({
-  operator: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+
   busNumber: {
     type: String,
     required: true,
