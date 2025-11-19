@@ -1,18 +1,7 @@
-/**
- * Bus Search Service (Mock Data Only)
- * Generates realistic mock data for bus bookings
- */
 
-/**
- * Search buses
- */
-const searchBuses = async (params) => {
-  const { origin, destination, departureDate, adults = 1 } = params;
-  console.log('🚌 Generating mock buses from', origin, 'to', destination);
-  return generateMockBuses(origin, destination, departureDate, adults);
-};
 
-/**
+
+/**888888.
  * Generate mock bus data
  */
 const generateMockBuses = (origin, destination, departureDate, adults) => {
