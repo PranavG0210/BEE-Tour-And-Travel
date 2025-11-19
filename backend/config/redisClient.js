@@ -3,7 +3,29 @@ const { createClient } = require('redis');
 let redisClient = null;
 // Initialize and connect Redis client
 // Exported function to connect Redis
+const connectRedis = async () => {
+  try {
+    const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
 
+    redisClient = createClient({
+      url: redisUrl,
+    });
+
+    redisClient.on('error', (err) => {
+      console.error('Redis Client Error:', err);
+    });
+
+    redisClient.on('connect', () => {
+      console.log('✅ Redis Client Connected');
+    });
+
+    await redisClient.connect();
+    return redisClient;
+  } catch (error) {
+    console.error('❌ Redis Connection Error:', error.message);
+    return null;
+  }
+};
 
 const setCache = async (key, data, ttl = 3600) => {
   try {
